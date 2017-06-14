@@ -17,24 +17,31 @@ export class AppComponent {
 
   constructor(private http: Http) { }
 
-  url = "http://localhost:3000";
+  url = "http://localhost:4567/notify";
 
   people = [
     { name: "Evandro", psi: "evandro.leite@sim.serpro.gov.br" },
-    { name: "Vanderlei", psi: "Vanderlei@sim.serpro.gov.br" },
-    { name: "Eduardo Barreto", psi: "barreto@sim.serpro.gov.br" },
+    { name: "Vanderlei", psi: "vanderlei.menezes-souza@sim.serpro.gov.br" },
+    { name: "Eduardo Barreto", psi: "eduardo.barreto@sim.serpro.gov.br" },
+    { name: "Ábner", psi: "abner.oliveira@sim.serpro.gov.br" },
   ];
 
   sendZuada(form: NgForm) {
-    console.log(form.value);
+    let zudaerios = [];
+    Object.keys(form.value).map(k => { 
+      if (form.value[k] === true){
+        zudaerios.push(k);  
+      }
+    });
+    console.log(zudaerios);
+    this.reportZuada(zudaerios).subscribe();
   }
 
 
-
-  apiZuada(people: any): Observable<any> {
+  reportZuada(zuadeiros: any): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.url, people, options)
+    return this.http.post(this.url, zuadeiros, options)
       .map(this.extractData)
       .catch(this.handleErrorObservable);
   }
