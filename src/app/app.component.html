@@ -1,45 +1,39 @@
-<form class="example-form">
-  <md-input-container class="example-full-width">
-    <input mdInput placeholder="Company (disabled)" disabled value="Google">
-  </md-input-container>
+<!--<form class="example-form">-->
+<!--<md-chip-list class="mat-chip-list-stacked">
+  <md-chip selected="true"  color="Warn">
+     ZUADA
+  </md-chip>
+</md-chip-list>-->
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="First name">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="Long Last Name That Will Be Truncated">
-    </md-input-container></td>
-  </tr></table>
+<!--Warn-->
 
-  <p>
-    <md-input-container class="example-full-width">
-      <textarea mdInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
-    </md-input-container>
-    <md-input-container class="example-full-width">
-      <textarea mdInput placeholder="Address 2"></textarea>
-    </md-input-container>
-  </p>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="City">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="State">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-      <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-    </md-input-container></td>
-  </tr></table>
+<form #zuadaForm="ngForm" (ngSubmit)="sendZuada(zuadaForm)">
+  <md-card class="example-card">
+    <md-card-header>
+      <!--<div md-card-avatar class="example-header-image"></div>-->
+      <md-card-title>ZUADA</md-card-title>
+      <!--<md-card-subtitle>Dog Breed</md-card-subtitle>-->
+    </md-card-header>
+    <!--<img md-card-image src="assets/img/examples/shiba2.jpg">-->
+    <!--<md-card-content>
+      <p>
+        <md-input-container class="example-full-width">
+          <textarea mdInput placeholder="Mensagem">[Mensagem não muito ofensiva aqui]</textarea>
+        </md-input-container>
+      </p>
+    </md-card-content>-->
+    <md-card-actions>
+      <span>Destinatários</span>
+      <BR>
+      <BR>
+      <div *ngFor="let person of people">
+        <md-checkbox name="{{person.psi}}" id="{{person.psi}}" ngModel>{{person.name}}</md-checkbox><BR>
+        <!--<input type="checkbox" name="{{person.psi}}" id="{{person.psi}}" ngModel>{{person.name}}<BR>-->
+      </div>
+    </md-card-actions>
+    <BR>
+    <button md-fab><md-icon>check</md-icon></button>
+  </md-card>
+
 </form>
-
-
-
-<h1>
-  {{title}} <BR><BR> 
-  <md-checkbox>Check me!</md-checkbox> <BR>
-  <md-checkbox>Check me!</md-checkbox><BR>
-  <md-checkbox>Check me!</md-checkbox> <BR> 
-</h1>
