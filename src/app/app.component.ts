@@ -17,7 +17,7 @@ export class AppComponent {
 
   constructor(private http: Http) { }
 
-  url = "http://localhost:4567/notify";
+  url = "http://10.32.112.136:4567/notify";
 
   people = [
     { name: "Evandro", psi: "evandro.leite@sim.serpro.gov.br" },
@@ -28,9 +28,9 @@ export class AppComponent {
 
   sendZuada(form: NgForm) {
     let zudaerios = [];
-    Object.keys(form.value).map(k => { 
+    Object.keys(form.value).map(k => {
       if (form.value[k] === true){
-        zudaerios.push(k);  
+        zudaerios.push(k);
       }
     });
     console.log(zudaerios);
